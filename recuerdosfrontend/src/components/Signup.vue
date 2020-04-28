@@ -31,19 +31,16 @@
               </v-col>
               <v-col cols="12" sm="6">
                 <v-select
-                 :items="location"
-                  label="Location*"
                   prepend-icon="mdi-map-marker"
-                  required
+                  :items="location"
+                  name="category"
+                  label="Select a category"
+                  v-model="category"
+                  v-validate="'required'"
+                  item-text="name"
                 >
                 </v-select>
               </v-col>
-              <select v-model="selected" label="Location*"
-                  prepend-icon="mdi-map-marker"
-                  required>
-                <option disabled value="">Seleccione un elemento</option>
-                <option v-for="(nota, idx) in location" :key="idx"> {{ nota.name }}</option>
-              </select>
             </v-row>
           </v-container>
           <small>*indicates required field</small>
@@ -64,7 +61,6 @@ import APIServices from '../services/Api'
 export default {
   data () {
     return {
-      location: '',
       userlocation: '',
       dialog: false,
       showPassword: false,
@@ -82,6 +78,9 @@ export default {
       ]
     }
   },
+  props: {
+    location: Array
+  },
   methods: {
     signup () {
       const newUser = {
@@ -98,9 +97,6 @@ export default {
         })
         .catch(err => console.log(err))
     }
-  },
-  mounted () {
-    APIServices.getAllLocations().then(res => (this.location = res))
   }
 }
 </script>

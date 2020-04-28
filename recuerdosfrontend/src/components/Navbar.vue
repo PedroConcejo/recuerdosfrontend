@@ -4,12 +4,12 @@
         <v-btn icon @click="back">
         <v-icon>mdi-arrow-left</v-icon>
       </v-btn>
-      <Partnerauth />
+      <Partnerauth :location="location" />
       <v-toolbar-title center>Recuerdos</v-toolbar-title>
 
       <v-spacer></v-spacer>
       <Login />
-      <Signup />
+      <Signup :location="location" />
 
       <v-btn icon @click="create">
         <v-icon>mdi-table-edit</v-icon>
@@ -28,6 +28,9 @@ import Partnerauth from '@/components/Partnerauth.vue'
 
 export default {
   name: 'Home',
+  props: {
+    location: Array
+  },
   components: {
     Login,
     Signup,

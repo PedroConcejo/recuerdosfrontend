@@ -3,14 +3,23 @@
     <Navbar :location="location" />
     <v-row>
      <v-col  offset="3" class="d-flex" cols="12" sm="6">
+       <v-select
+          prepend-icon="mdi-map-marker"
+                  :items="category"
+                  name="category"
+                  label="Select a Category"
+                  v-model="category"
+                  v-validate="'required'"
+                  item-text="name"
+        ></v-select>
         <v-select
-          :items="categories"
-          label="Tipo de Sesion"
-          solo
-        ></v-select> <v-select
-          :items="location"
-          label="Ubicacion"
-          solo
+          prepend-icon="mdi-map-marker"
+                  :items="location"
+                  name="category"
+                  label="Select a Location"
+                  v-model="category"
+                  v-validate="'required'"
+                  item-text="name"
         ></v-select>
          <v-btn class="ma-2" outlined color="black">Buscar</v-btn>
       </v-col>
